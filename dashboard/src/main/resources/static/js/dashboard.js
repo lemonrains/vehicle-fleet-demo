@@ -3,7 +3,7 @@
 var mapboxUrl = 'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={token}';
 var mapID = 'albertoaflores.llpjgl43';
 var mapToken = 'pk.eyJ1IjoiYWxiZXJ0b2FmbG9yZXMiLCJhIjoiS3duWUxzUSJ9.X1rRTTRkktNR7DFIc0DsCw';
-var mapboxAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+var mapboxAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
 
 var MESSAGE_STATUS_TO_STATUS_MAP = {
 	'NONE': 'None',
@@ -773,15 +773,15 @@ function setupServiceCenters() {
 
 	// Overlay layers are grouped
 	var groupedOverlays = {
-		"<i class='fa fa-bus'></i> RentMe Locations" : {
-			"Service Center <i class='fa fa-wrench'></i>" : scg
+		"<i class='fa fa-bus'></i> 服务站位置" : {
+			"服务中心 <i class='fa fa-wrench'></i>" : scg
 		}
 	};
 
 	// Overlay layers are grouped
 	var groupedOverlays2 = {
-		"<i class='fa fa-bus'></i> RentMe Locations" : {
-			"Service Center <i class='fa fa-wrench'></i>" : scg2
+		"<i class='fa fa-bus'></i> 服务站位置" : {
+			"服务中心 <i class='fa fa-wrench'></i>" : scg2
 		}
 	};
 
@@ -794,7 +794,7 @@ function setupServiceCenters() {
 
 function createServiceCenterPopup(data) {
 	return "<div class='scg_popup'>"
-		+ "<div class='loc_header'><i class='fa fa-wrench'></i>RentMe Service Center</div>"
+		+ "<div class='loc_header'><i class='fa fa-wrench'></i>服务中心</div>"
 		+ (typeof data.address2 === 'string' && data.address2.length > 0 ? "<div class='loc_comments'>" + data.address2 + "</div>" : '')
 		+ "<div>" + data.address1 + "</div>" + "<div>"
 		+ data.city + ", " + data.state + " "
@@ -818,13 +818,13 @@ function setupMapLegend() {
 	info.onAdd = function(map) {
 		this._div = L.DomUtil.create('div', 'info');
 		var img = '<img src="https://www.mapbox.com/maki/renders/bus-18' + (L.Browser.retina ? '@2x' : '') + '.png" height="18" width="18">';
-		this._div.innerHTML = '<h4 style="color: black">RentMe Vehicles</h4>'
-				+ '<i class="faa-flash animated">' + img + '</i> Moving &nbsp;&nbsp;&nbsp;&nbsp; ' + img + ' Stopped <br/>'
-				+ '<i class="fa fa-map-marker" style="color: green;"></i> Normal &nbsp;&nbsp;'
-				+ '<i class="fa fa-map-marker" style="color: blue"></i> ServiceInfo &nbsp;&nbsp;'
-				+ '<i class="fa fa-map-marker" style="color: yellow"></i> ServiceSoon &nbsp;&nbsp;'
-				+ '<i class="fa fa-map-marker" style="color: orange"></i> ServiceNow &nbsp;&nbsp;'
-				+ '<i class="fa fa-map-marker" style="color: red"></i> StopNow &nbsp;';
+		this._div.innerHTML = '<h4 style="color: black">车辆监控</h4>'
+				//+ '<i class="faa-flash animated">' + img + '</i> 移动中 &nbsp;&nbsp;&nbsp;&nbsp; ' + img + ' 停止 <br/>'
+				+ '<i class="fa fa-map-marker" style="color: green;"></i> 正常 &nbsp;&nbsp;'
+				+ '<i class="fa fa-map-marker" style="color: blue"></i> 可服务 &nbsp;&nbsp;'
+				+ '<i class="fa fa-map-marker" style="color: yellow"></i> 即将服务 &nbsp;&nbsp;'
+				+ '<i class="fa fa-map-marker" style="color: orange"></i> 服务中 &nbsp;&nbsp;'
+				+ '<i class="fa fa-map-marker" style="color: red"></i> 停运中 &nbsp;';
 		return this._div;
 	};
 

@@ -2,6 +2,7 @@
 <html>
   <head>    
   	<title>RentMe Fleet</title>
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   	<link rel="stylesheet" href="/css/bootstrap-3.2.0.css" type="text/css" ></link>
     <link rel="stylesheet" href="/css/visualsearch-datauri.css" type="text/css" />
 	<link rel="stylesheet" href="/webjars/leaflet/0.7.5/leaflet.css" type="text/css" />
@@ -45,20 +46,20 @@ $( "#toDate" ).datepicker({
     <div class="navbar navbar-fixed-top" role="navigation" id="navbar">
       <div>
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">
-            <img class="img-rounded header-icon" height="46" width="150" src="/images/rentme_logo_ent_horiz_RGB.JPG" />
-      	  </a>
+          <!--<a class="navbar-brand" href="/">-->
+            <!--<img class="img-rounded header-icon" height="46" width="150" src="/images/rentme_logo_ent_horiz_RGB.JPG" />-->
+      	  <!--</a>-->
       	  <div class="visual_search"></div>      	  
         </div>
         <div class="navbar-collapse collapse">
           <div class="navbar-form navbar-left">
       	    <a class="btn btn-default btn-sm my_popup_open">
       	      <span class="fa fa-filter"></span>
-      	       Filters</a>
+      	       筛选</a>
       	      <span id="spinnerIcon" class="fa fa-spinner fa-spin"></span>
       	  </div>
           <div class="navbar-right">
-	        <h4>The Connected Fleet</h4>
+	        <h4>车辆监控</h4>
           </div>
           
         </div><!--/.navbar-collapse -->
@@ -74,44 +75,44 @@ $( "#toDate" ).datepicker({
 		<form id="filterForm">
 			<div>
 				<div>
-					<span class="leaflet-control-layers-group-name">Service Filter</span>
+					<span class="leaflet-control-layers-group-name">筛选</span>
 					<label>
 						<input name="serviceFilter" value="StopTruck" type="checkbox"/>
-						<span> StopNow</span>
+						<span> 停运</span>
 					</label>
 					<label>
 						<input name="serviceFilter" value="ServiceNow"  type="checkbox"/>
-						<span> ServiceNow</span>
+						<span> 营运中</span>
 					</label>
 					<label>
 						<input name="serviceFilter" value="ServiceSoon"  type="checkbox"/>
-						<span> ServiceSoon</span>
+						<span> 即将运营</span>
 					</label>
 					<label>
 						<input name="serviceFilter" value="ServiceInfo" type="checkbox"/>
-						<span> ServiceInfo</span>
+						<span> 运营情况</span>
 					</label>
 					<label>
 						<input name="serviceFilter" value="None" type="checkbox"/>
-						<span> None</span>
+						<span> 无</span>
 					</label>
 				</div>
 				<div>
-					<span class="leaflet-control-layers-group-name">Vehicle Movement</span>
+					<span class="leaflet-control-layers-group-name">车辆移动</span>
 					<label>
 						<input name="vehicleMovementFilter" value="IN_MOTION" type="checkbox"/>
-						<span> In Motion</span>
+						<span> 移动中</span>
 					</label>
 					<label>
 						<input name="vehicleMovementFilter" value="STOPPED" type="checkbox"/>
-						<span> Stopped</span>
+						<span> 停止</span>
 					</label>
 				</div>
 			</div>
 		</form>
 		
 		<!-- Add an optional button to close the popup -->
-        <button class="btn btn-info btn-sm  my_popup_close" onclick="updateSearch()">Update Search</button>
+        <button class="btn btn-info btn-sm  my_popup_close" onclick="updateSearch()">查询</button>
         
       </div>      
        
@@ -122,46 +123,46 @@ $( "#toDate" ).datepicker({
 	               <td colspan="2" id="telemetryVin"></td> 
 	             </tr>
 	             <tr>
-	               <th align="right">Address:</th>
+	               <th align="right">地址:</th>
 	               <td id="telemetryAddress"></td>
 	             </tr>
 	             <tr>
-	               <th align="right">Timestamp:</th>
+	               <th align="right">时间:</th>
 	               <td id="telemetryTimestamp"></td>
 	             </tr>
 			   </table>
          		<div id="miniMap"></div>
 	       		<fieldset class="scheduler-border">
-				    <legend class="scheduler-border"><i class="fa fa-tachometer"></i> Telemetry Info</legend>
+				    <legend class="scheduler-border"><i class="fa fa-tachometer"></i>传感器信息</legend>
 				     <table class="vehicleDetails">
 			             <tr>
-			               <th align="right">Longitude:</th>
+			               <th align="right">经度:</th>
 			               <td id="telemetryLongitude"></td>
-			               <th align="right">TSP Provider:</th>
+			               <th align="right">TSP:</th>
 			               <td id="telemetryTspProvider"></td>		               
 			             </tr>
 			             <tr>
-			               <th align="right">Latitude:</th>
+			               <th align="right">维度:</th>
 			               <td id="telemetryLatitude"></td>
-			               <th align="right">Odometer:</th>
+			               <th align="right">里程计:</th>
 			               <td id="telemetryOdometer"></td>
 			             </tr>
 			             <tr>
-			               <th align="right">GpsSpeed:</th>
+			               <th align="right">速度:</th>
 			               <td id="telemetryGpsSpeed"></td>
-			               <th align="right">Total Engine Time:</th>
+			               <th align="right">引擎运行时间:</th>
 			               <td id="telemetryTotalEngineTime"></td>
 			             </tr>
 			             <tr>
-			               <th align="right">GpsStatus:</th>
+			               <th align="right">GPS状态:</th>
 			               <td id="telemetryGpsStatus"></td>
-			               <th align="right">Total Idle Time:</th>
+			               <th align="right">空闲时间:</th>
 			               <td id="telemetryTotalIdleTime"></td>
 			             </tr>
 			             <tr>
-			               <th align="right">Heading:</th>
+			               <th align="right">方向:</th>
 			               <td id="telemetryHeading"></td>
-			                <th align="right">Total Fuel Usage:</th>
+			                <th align="right">燃油使用量:</th>
 			               <td id="telemetryTotalFuelUsage"></td>
 			             </tr>
 	                 </table>
@@ -170,13 +171,13 @@ $( "#toDate" ).datepicker({
 					<legend class="scheduler-border"><i class="fa fa-bus"></i> RentMe Unit Details</legend>
 				     <table class="vehicleDetails">
 					  <tr >
-			               <th align="right">Customer Name:</th>
+			               <th align="right">客户姓名:</th>
 			               <td colspan="3" id="customerName"></td>
 			          </tr>
 			          <tr>
 			               <th align="right">Unit #:</th>
 			               <td id="unitNumber"></td>
-			               <th align="right">Engine Make:</th>
+			               <th align="right">引擎制造商:</th>
 			               <td id="engineMake"></td>
 			             </tr>
 					</table>
@@ -197,7 +198,7 @@ $( "#toDate" ).datepicker({
 			               <td id="rentmeFCfaultCodeId"></td>
 			            </tr>
 			            <tr class="rentmeFaultCode">
-			               <th align="right">Description:</th>
+			               <th align="right">描述:</th>
 			               <td colspan="3" id="rentmeFCdescription"></td>
 			            </tr>
 			            <tr class="rentmeFaultCode">
@@ -211,7 +212,7 @@ $( "#toDate" ).datepicker({
        
     </div>
 	<footer>
-		<p>Version - 2015 - Connected Vehicles for RentMe</p>
+		<p>Version - 2017 - 车辆监控系统</p>
 	</footer>
 
 	<!-- Include jQuery Popup Overlay -->
